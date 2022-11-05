@@ -5,5 +5,5 @@
 
 [DEFAULT]
 # Specify where you save your downloaded CSV files:
-Source Path =
+Source Path = C:\Users\Miszczuq\Downloads
 YNAB API Access Token =

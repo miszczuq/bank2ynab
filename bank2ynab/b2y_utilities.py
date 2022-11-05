@@ -338,7 +338,8 @@ class EncodingCsvReader(EncodingFileContext):
     """context manager returning a csv.Reader-compatible object"""
 
     def __enter__(self):
-        encoding = detect_encoding(self.file_path)
+        # encoding = detect_encoding(self.file_path)
+        encoding = "mbcs"
         self.stream = open(self.file_path, encoding=encoding)
         self.csv_object = csv.reader(self.stream, **self.params)
         return self.csv_object

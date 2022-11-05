@@ -134,6 +134,7 @@ class B2YBank(object):
                     fixed_row = self._fix_inflow(fixed_row)
                     # fill in blank memo fields
                     fixed_row = self._auto_memo(fixed_row, fill_memo)
+                    fixed_row = self._fix_memo(fixed_row)
                     # convert decimal point
                     fixed_row = self._fix_decimal_point(fixed_row)
                     # remove extra characters in the inflow and outflow
@@ -267,6 +268,13 @@ class B2YBank(object):
             memo_index = self.config["output_columns"].index("Memo")
             if row[memo_index] == "":
                 row[memo_index] = row[payee_index]
+        return row
+
+    def _fix_memo(self, row):
+        memo_index = self.config["output_columns"].index("Memo")
+        txt = row[memo_index]
+        sliced = re.split("\s{2,}", txt)
+        row[memo_index] = sliced[0]
         return row
 
     def _fix_date(self, row, date_format):
