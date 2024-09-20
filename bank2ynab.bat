@@ -1,2 +1,2 @@
 cd %~dp0
-@py.exe bank2ynab %*
+@python bank2ynab %*
